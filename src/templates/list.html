@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+        
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center mt-3">
+                <h2 class="fw-bolder">{{msj}}</h2>
+                <p> {{msj2}}</p>
+                {% if np != "all" %}
+                    <a class="mb-5 lead mt-3" href=" {{ url }}"> Visita el periódico</a> 
+                {% endif %}
+            
+                <div class="row">
+                    
+                    <div class="col">
+                        <div class="dropdown mb-2 lead mt-5">
+                            {% if np == "all" %}
+                                {% if cad %}
+                                    <form method='GET' action="content_date_filter" novalidate>
+                                {% else %}
+                                    <form method='GET' action="date_filter" novalidate>
+                                {% endif %}
+                            {% else %}
+                                {% if date_filter == 0 %} <!-- Si no ha habido consulta previa -->
+                                    <form method='GET' action="{{ np }}/date_filter" novalidate>
+                                {% else %}
+                                    <form method='GET' action="" novalidate>   
+                                {% endif %} 
+                            {% endif %}
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-md-auto">
+                                            <label for="inicio">Fecha inicial</label>
+                                            <input type="date" id="start" name="start" value="" min="" max="2022-12-31">
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <label  class="" for="final">Fecha final</label>
+                                            <input type="date" id="end" name="end" value="" min="2018-01-01" max="2022-12-31">
+                                        </div>
+                                    </div>
+                                    {% if cad %}
+                                        <input type="hidden" name="str" value="{{cad}}">
+                                    {% endif %}
+                                <button class="mt-3 btn btn-outline-secondary" type="submit" >Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <p class="mt-3"> Se han encontrado {{t}} noticias</p>
+                </div>
+            </div>
+        </div>
+    </header>
+            {% for new in list %}
+               
+                <div class="card mb-3">
+                    <div class="row no-gutters" >
+                    <div class="col-md-4">
+                        <a href="view_new/{{new._id}}">
+                            <img src="{{ new.img }}" class="card-img mx-3 mt-3" alt="Foto de la noticia {{ new.title }} " >
+                        </a>
+                        <a href="view_new/{{new._id}}">
+                            <button type="button m-2" class="btn btn-secondary card-img mx-3 mb-1"> Ver más </button>
+                        </a>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <a href="view_new/{{new._id}}" class="link-dark" id="titles-links"><h5 class="card-title">{{ new.title }}</h5></a>
+                        <p class="line-clamp"> {{new.resume}} </p>
+                        
+
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                {% if new.date!= None %}
+                                <p class="card-text mt-3"><small class="text-muted">{{ new.date }}</small></p>
+                                {% endif %}
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <p class="card-text mt-3"><small class="text-muted">{{ new.np }}</small></p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+</div>
+
+{% endblock %}

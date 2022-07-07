@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Nested row for non-featured blog posts-->
+<div class="row">
+     <!-- Blog post-->
+     <div class="card mb-4">
+            <a href="/news"><img class="card-img-top" src="{{ url_for('static', filename='img/principal1.png') }}"  alt="Logo Granada Hoy" /></a>
+            <div class="card-body">
+                
+                <h2 class="card-title h4"> Ver todas las noticias que mencionan a la Universidad de Granada  </h2>
+                <p class="card-text"> Visita las noticias sobre la UGR que han sido publicadas en los diferentes perióicos locales</p>
+                <a class="btn btn-primary" href="/news"> Ver Noticias</a>
+            </div>
+    </div>
+    <div class="col-lg-6">
+        <!-- Blog post-->
+        <div class="card mb-4">
+            <a href="/news/granadahoy"><img class="card-img-top" src="{{ url_for('static', filename='img/gh_logo.png') }}" alt="Logo Granada Hoy" /></a>
+            <div class="card-body">
+                
+                <h2 class="card-title h4">Granada Hoy</h2>
+                <p class="card-text"> Visita las noticias publicadas en Granada Hoy, un periódico español editado en la ciudad de Granada, y pertenece al grupo Joly.​</p>
+                <a class="btn btn-primary" href="/news/granadahoy"> Ver Noticias</a>
+            </div>
+        </div>
+        <!-- Blog post-->
+        <div class="card mb-4">
+            <a href="/news/ahoragranada"><img class="card-img-top" src="{{ url_for('static', filename='img/ag_logo.jpg') }}" alt="..." /></a>
+            <div class="card-body">
+                
+                <h2 class="card-title h4" >Ahora Granada </h2>
+                <p class="card-text"> Visita las noticias que han sido publicadas en el Ahora Granada</p>
+                <a class="btn btn-primary" href="/news/ahoragranada"> Ver Noticias</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <!-- Blog post-->
+        <div class="card mb-4">
+            <a href="#!"><img class="card-img-top" src="{{ url_for('static', filename='img/gd_logo.png') }}" alt="..." /></a>
+            <div class="card-body">
+                <h2 class="card-title h4">Granada Digital</h2>
+                <p class="card-text"> Visita las noticias que han sido publicadas en el Granada Digital</p>
+                <a class="btn btn-primary" href="/news/granadadigital"> Ver Noticias</a>
+            </div>
+        </div>
+        <!-- Blog post-->
+        <!--<div class="card mb-4">
+            <a href="#!"><img class="card-img-top" src="{{ url_for('static', filename='img/ddg_logo.png') }}" alt="..." /></a>
+            <div class="card-body">
+                <h2 class="card-title h4"> Diario de Granada </h2>
+                <p class="card-text"> Granada Hoy es un periódico español editado en la ciudad de Granada, y pertenece al grupo Joly.​</p>
+                <a class="btn btn-primary" href="#!"> Ver Noticias</a>
+            </div>
+        </div>-->
+        
+    </div>
+
+    <div class="col-lg-6">
+        <!-- Blog post-->
+        <!--<div class="card mb-4">
+            <a href="#!"><img class="card-img-top" src="{{ url_for('static', filename='img/ind_logo.png') }}" alt="..." /></a>
+            <div class="card-body">
+                
+                <h2 class="card-title h4">El Independiente de Granada </h2>
+                <p class="card-text"> Granada Hoy es un periódico español editado en la ciudad de Granada, y pertenece al grupo Joly.​</p>
+                <a class="btn btn-primary" href="#!"> Ver Noticias</a>
+            </div>
+        </div>-->
+        
+    </div>
+</div>
+
+{% endblock %}

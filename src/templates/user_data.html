@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2> Editar Usuario </h2>
+
+<form class="row g-3 needs-validation"  action="/modify_user/{{ user._id }}"  method="POST" novalidate >
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label" >Nombre</label>
+      <input type="text" class="form-control" placeholder="{{ user.name }}" name="name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" placeholder="{{ user.surname }}"  name="surname" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Usuario</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input type="text" class="form-control" placeholder="{{ user.username }}" name="username" aria-describedby="inputGroupPrepend" readonly>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" name="pwd" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-12">
+      {% if user.superadmin != "1": %}
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="1"> Superadmin <br>
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="0" checked > Gestor <br>
+      {% else %}
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="1" checked> Superadmin <br>
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="0"> Gestor <br>
+      {% endif %}
+          
+
+    </div>
+    
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Guardar cambios</button>
+    </div>
+  </form>
+
+  {% endblock %}

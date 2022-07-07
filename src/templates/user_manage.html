@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Usuarios </h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"> Usuario </th>
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Apellido </th>
+      <th scope="col"> Rol </th>
+      <th scope="col">  Gestionar </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+      <tr id="{{ user._id }}">
+        <th scope="row">{{ user.username }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.rol }}</td>
+        <td>
+            <a class="btn btn-outline-secondary mb-2" href="user_data_form/{{ user._id }}">
+              Modificar
+            </a>
+            {% if admin != user.name: %}
+              <a class="btn btn-outline-danger mb-2" onclick="BorrarUsuario('{{ user._id }}')">
+                Borrar
+              </a>
+            {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+
+<h1 class="mt-5 mb-3"> Registro de Nuevo Usuario </h1>
+
+<form class="row g-3 needs-validation" method=post action="/register" novalidate>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="name" id="name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom02" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" name="surname" id="surname" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Usuario</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input type="text" class="form-control"  name="username" id="username" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="pwd" id="pwd" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-12">
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="1"> Superadmin <br>
+        <input type="radio" class="m-2" name="superadmin" id="superadmin" value="0" checked > Gestor <br>
+      </div>
+      
+
+    <div class="col-12 mb-5">
+      <button class="btn btn-primary" type="submit" name="register" id="register">Guardar cambios</button>
+    </div>
+  </form>
+
+  {% endblock %}

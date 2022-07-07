@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">Gestión Base de Datos</h2>
+
+    <div class="container">
+        <div class="row justify-content-md-center text-center">
+            <div class="card mt-5 text-center " style="width: 20rem;">
+                <ul class="list-group list-group-flush text-center">
+                    <input type=submit class="btn btn-outline-warning m-1" name=btn_submit value="Búsqueda" onclick="BusquedaDiaria()">
+                    <!--{% if superadmin=="1" %}
+                        <input type=submit id="updatebd" name="deletebd" class="btn btn-outline-success m-1" value="Actualizar todo" onclick="ActualizacionNoticias()">
+                    {% endif %}-->
+                </ul>
+                    
+                <img id="loading" src="{{ url_for('static', filename='img/loading.gif') }}"/>
+                
+            </div>
+            <p class="mt-5"> <strong> Ultima actualización:</strong></p> 
+            <p>{{ last_update }} </p>
+               
+        </div>
+       
+
+    </div>
+
+
+
+       
+  
+
+{% endblock %}

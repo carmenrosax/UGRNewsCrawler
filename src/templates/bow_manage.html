@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center"> Gestión de la Bolsa de Palabras </h2>
+
+    <div class="container">
+
+        <div class="alert alert-warning mt-5" role="alert">
+            A continuación se muestran todas las expresiones contenidas en la bolsa de palabras. 
+          </div>
+        <div class="row justify-content-md-center">
+            <div class="card mt-5 text-center " style="width: 20rem;">
+                <ul class="list-group list-group-flush">
+                    
+                        {% for word in word_list %}
+                        <div class="row">
+                            <div class="col">
+                                <p> {{ word }}  </p>
+                            </div>
+                            <div class="col">
+                                <a class="link-danger" id="borrarexpresion" onclick="BorrarExpresion('{{ word }}')">X</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                </ul>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="nuevaexpresion" placeholder="Nueva expresión" aria-label="Nueva expresión" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" >Añadir</button>
+                  </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+       
+  
+
+{% endblock %}

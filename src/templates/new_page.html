@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+
+    {% if new %}
+    {% for n in new %}
+        <h1> {{ n.title }} </h1>
+
+       
+
+        <div class="row">
+            <img src="{{ n.img }}" class="card-img mt-3" alt="Foto de la noticia {{ n.title }} " >
+            <div class="col-12 col-md-8">
+                <p class="card-text mt-1"><small class="text-muted">{{ n.date }}</small></p>
+            </div>
+            <div class="col-6 col-md-4">
+                <p class="card-text mt-1"><small class="text-muted">Noticia publicada en: {{ n.np }}</small></p>
+            </div>
+          </div>
+
+        <div class="row mt-5" id="result">  
+           {{n.content | safe}}
+        </div>
+
+        <a class="mb-5" href="{{ n.url }}"> Visita la noticia en el periódico
+        </a>
+      
+
+    {% endfor %}
+    {% endif %}
+  
+</div>
+
+{% endblock %}

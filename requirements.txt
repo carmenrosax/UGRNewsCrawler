@@ -1,0 +1,9 @@
+flask
+redis
+pickleshare
+wtforms
+pymongo
+Flask-PyMongo
+Scrapy
+cffi
+python-dotenv
